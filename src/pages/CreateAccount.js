@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
+import "./CreateAccount.css";
 
 const CreateAccount = () => {
   const [useremail, setUseremail] = useState("");
@@ -45,11 +46,11 @@ const CreateAccount = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-4">Create Account</h2>
+    <div className="create-account-container">
+      <div className="create-account-box">
+        <h2>Create Account</h2>
         <input
-          className="w-full p-2 border rounded mb-3"
+          className="create-account-input"
           type="text"
           placeholder="Useremail"
           value={useremail}
@@ -58,7 +59,7 @@ const CreateAccount = () => {
           onKeyUp={handleKeyUp}
         />
         <input
-          className="w-full p-2 border rounded mb-3"
+          className="create-account-input"
           type="password"
           placeholder="Password"
           value={password}
@@ -67,7 +68,7 @@ const CreateAccount = () => {
           onKeyUp={handleKeyUp}
         />
         <select
-          className="w-full p-2 border rounded mb-3"
+          className="create-account-select"
           value={securityQuestion}
           onChange={(e) => setSecurityQuestion(e.target.value)}
         >
@@ -86,16 +87,13 @@ const CreateAccount = () => {
           </option>
         </select>
         <input
-          className="w-full p-2 border rounded mb-3"
+          className="create-account-input"
           type="text"
           placeholder="Answer"
           value={securityAnswer}
           onChange={(e) => setSecurityAnswer(e.target.value)}
         />
-        <button
-          className="w-full bg-blue-500 text-white p-2 rounded"
-          onClick={handleCreateAccount}
-        >
+        <button className="create-account-button" onClick={handleCreateAccount}>
           Create Account
         </button>
       </div>

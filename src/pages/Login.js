@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api";
+import "./Login.css";
 
 const Login = () => {
   const [useremail, setUseremail] = useState("");
@@ -78,11 +79,11 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-4">Login</h2>
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Login</h2>
         <input
-          className="w-full p-2 border rounded mb-3"
+          className="login-input"
           type="text"
           placeholder="Useremail"
           value={useremail}
@@ -91,7 +92,7 @@ const Login = () => {
           onKeyUp={handleKeyUp}
         />
         <input
-          className="w-full p-2 border rounded mb-3"
+          className="login-input"
           type="password"
           placeholder="Password"
           value={password}
@@ -100,34 +101,25 @@ const Login = () => {
           onKeyUp={handleKeyUp}
         />
         {!showSecurity ? (
-          <div> 
-            <button
-                className="w-full bg-blue-500 text-white p-2 rounded"
-                onClick={handleLogin}
-            >
-                Login
+          <div>
+            <button className="login-button" onClick={handleLogin}>
+              Login
             </button>
-            <p
-                className="mt-4 text-sm text-blue-500 cursor-pointer"
-                onClick={() => navigate("/create-account")}
-                >
-                Don't have an account? Create one
+            <p className="create-account-link" onClick={() => navigate("/create-account")}>
+              Don't have an account? Create one
             </p>
           </div>
         ) : (
           <>
-            <p className="mb-2">{securityQuestion}</p>
+            <p className="security-question">{securityQuestion}</p>
             <input
-              className="w-full p-2 border rounded mb-3"
+              className="security-answer-input"
               type="text"
               placeholder="Answer"
               value={securityAnswer}
               onChange={(e) => setSecurityAnswer(e.target.value)}
             />
-            <button
-              className="w-full bg-green-500 text-white p-2 rounded"
-              onClick={handleVerifySecurity}
-            >
+            <button className="verify-button" onClick={handleVerifySecurity}>
               Verify Security Answer
             </button>
           </>

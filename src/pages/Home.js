@@ -1,9 +1,19 @@
 import React from "react";
+import "./Home.css";
+import sampleImage from "./home.jpg";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-2xl font-bold">Welcome to the Home Page!</h1>
+    <div className="home-container">
+      <div className="home-content">
+        <img src={sampleImage} alt="Sample" className="home-image" />
+        <div className="home-text">
+          <h1>Welcome to the LSMAA!</h1>
+          <p>
+            This is an adaptive authentication system built using learning state machine concept.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
