@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import api from "../api";
+import "./OTPPage.css";
 
 const OTPPage = () => {  
   const [otp, setOtp] = useState("");
@@ -26,20 +27,17 @@ const OTPPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-xl font-bold mb-4">Enter OTP</h2>
+    <div className="otp-container">
+      <div className="otp-box">
+        <h2 className="otp-title">Enter OTP</h2>
         <input
-          className="w-full p-2 border rounded mb-3"
+          className="otp-input"
           type="text"
           placeholder="OTP"
           value={otp}
           onChange={(e) => setOtp(e.target.value)}
         />
-        <button
-          className="w-full bg-blue-500 text-white p-2 rounded"
-          onClick={handleVerifyOTP}
-        >
+        <button className="otp-button" onClick={handleVerifyOTP}>
           Verify OTP
         </button>
       </div>
