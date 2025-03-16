@@ -5,8 +5,9 @@ import "./index.css"; // TailwindCSS or other styles
 import { AuthProvider } from "@asgardeo/auth-react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <AuthProvider
+root.render(  
+    <React.StrictMode>
+      <AuthProvider
         config={ {
             signInRedirectURL: "https://468223a9-7ed7-4f9e-bb6d-aa85cb7415a6.e1-us-east-azure.choreoapps.dev/",
             signOutRedirectURL: "https://468223a9-7ed7-4f9e-bb6d-aa85cb7415a6.e1-us-east-azure.choreoapps.dev/",
@@ -14,9 +15,8 @@ root.render(
             baseUrl: "https://api.asgardeo.io/t/budwin",
             scope: [ "openid","profile" ]
         } }
-    >
-      <React.StrictMode>
+      >
         <App />
-      </React.StrictMode>
-    </AuthProvider>
+      </AuthProvider>
+    </React.StrictMode>    
 );
