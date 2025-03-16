@@ -1,21 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import CreateAccount from "./pages/CreateAccount";
-import Home from "./pages/Home";
-import OTPPage from "./pages/OTPPage";
+import { useAuthContext } from "@asgardeo/auth-react";
 
 function App() {
+  const { state, signIn, signOut } = useAuthContext();
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/otp" element={<OTPPage />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      {
+        state.isAuthenticated
+          ? (
+            <div>
+              <ul>
+                <li>{state.username}</li>
+              </ul>
+
+              <button onClick={() => signOut()}>Logout</button>
+            </div>
+          )
+          : <button onClick={() => signIn()}>Login</button>
+      }
+    </div>
   );
 }
 
