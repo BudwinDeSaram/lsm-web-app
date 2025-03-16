@@ -8,15 +8,15 @@ function App() {
       {
         state.isAuthenticated
           ? (
-            <div>
-              <ul>
-                <li>{state.username}</li>
-              </ul>
-
+            <div>              
+              <h1>Hello, {state.username}</h1>
               <button onClick={() => signOut()}>Logout</button>
             </div>
+          ) : (
+            <div>
+              <button onClick={() => signIn()}>Login</button>
+            </div>
           )
-          : <button onClick={() => signIn()}>Login</button>
       }
     </div>
   );
